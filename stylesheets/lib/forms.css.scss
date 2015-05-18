@@ -1,0 +1,221 @@
+.form-group {
+  input {
+    margin-top:0px;
+    margin-bottom:auto;
+    vertical-align:center;
+  }
+}
+.session {
+  -webkit-user-select:none;
+  margin-top:10%;
+  background: #f7f7f7 !important;
+  padding: 1.5em !important;
+}
+
+.form-content legend {
+  width: 35%;
+  margin-bottom:10px;
+  font-family:'Poiret One';
+  font-size:1em;
+  color: #95A5A6;
+  font-weight:bold;
+  padding:5px 10px !important;
+  background: #f7f7f7 !important;
+  position:relative;
+  top:3px;
+  left:0px;
+  margin-left:-1.5em;
+  border-top-right-radius:10px;
+  border-bottom:none;
+}
+.password-reset-form-section legend {
+  width:50%;
+}
+.form-content fieldset {
+  border:none;
+  margin-bottom:1px;
+}
+.signup-form-section legend {left:-1.5em;width:45%;}
+.login-content {
+  background-color: $base !important;
+}
+.login-form-links {
+  background-color: #f7f7f7 !important;
+  border-left:7px solid $base;
+  margin-bottom:10px;
+  box-shadow:0 0 1px 0.1em rgba(70,70,70,0.1em);
+}
+.form-content button[type="submit"] {
+  float:right;
+  margin-top:8px;
+  background-color:$base !important;
+}
+.signup-form-section {
+  width:100%;
+  margin-top:0;
+  margin-right:auto;
+  margin-left:-0.4em;
+  margin-bottom:0 !important;
+}
+.ui.grid .package.column {
+  margin-right:-1.7em;
+  .signup-package:first-child {
+    margin-top:0;
+  }
+  .signup-package:last-child {
+    margin-bottom:0;
+  }
+  .signup-package.row {
+    @include transition(all);
+    width:100%;
+    background-color: #f7f7f7 !important;
+    border-left:7px solid $base;
+    box-shadow:0 0 1px 0.1em rgba(70,70,70,0.1em);
+    margin-bottom:0.5em;
+    .ui.grid {
+      margin-left:1.5em;
+    }
+    .ui.message {
+      background-color: #f7f7f7 !important;
+    }
+    &:hover {border-left:7px solid $bright_blue;}
+  }
+}
+//.form-container.modal-container form.ui.form {
+//  background-color: $base !important;
+//}
+.ui.form .field .large.input input {
+  font-size:1em !important;
+}
+.ui.form .field .large.right.input i.icon {
+  margin-right: -5px;
+  margin-top: -5px;
+}
+.ui.form .field .large.left.input i.icon {
+  margin-left: -5px;
+  margin-top: -5px;
+}
+.ui.form .field .input i.icon {
+  pointer-events: none;
+}
+.ui[class*="left icon"].input > i.icon:first-of-type {
+  pointer-events: none;
+}
+.ui.form .field .input .remove i.icon {
+  pointer-events: all;
+}
+.pull-right {
+  float:right;
+}
+.login-form-links {
+  box-shadow: 0 0 0 0.05em rgba(0,0,0, 0.1) !important;
+  margin-top:10px;
+  padding:10px;
+  padding-top:5px !important;
+  h4:first-of-type {
+    margin-top:0px;
+  }
+  .blue {
+    color:$base;
+  }
+}
+.form-container, .modal-container {
+  width:50%;
+  margin-top:15%;
+  margin-left:auto;
+  margin-right:auto;
+  fieldset {
+    box-shadow: 0 0 0 0.05em rgba(0,0,0, 0.1) !important;
+  }
+}
+.form-container.registration {
+  width:75%;
+}
+@media only screen and (max-width: 1000px) {
+  .form-container {
+    width:75%;
+  }
+  .form-container.registration {
+    width:90%;
+  }
+
+}
+@media only screen and (max-width: 760px) {
+  .form-container {
+    width:90%;
+  }
+  .form-container.registration {
+    width:95%;
+  }
+
+}
+
+fieldset.crooked {
+  margin-top:3em;
+  outline:none;
+  border:none;
+  position: relative;
+  min-height:150px;
+  -webkit-transform: translate3d(0,0,0);
+}
+fieldset.crooked:after, fieldset.crooked:before {
+  top: 0;
+  left:0;
+  visibility: visible;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  border-radius:4px;
+
+}
+fieldset.crooked:before {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  background-color:white;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+  z-index:-1;
+}
+fieldset.crooked:after {
+  -webkit-transform: rotate(1.6deg);
+  -moz-transform: rotate(1.6deg);
+  -ms-transform: rotate(1.6deg);
+  transform: rotate(1.6deg);
+  background-color:rgb(254,254,254);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+  z-index:-10;
+  height: 60%;
+  width: 80%;
+  left: 3px;
+}
+fieldset.crooked>legend {
+  font-size:0.9em;
+  letter-spacing:-0.08em;
+  text-shadow: 0    0   0 white, 1px  0px 0 white,
+               0px  1px 0 white,-1px -0px 0 white,
+              -0px -1px 0 white, 1px -0px 0 white,
+               0px -1px 0 white,-1px  0px 0 white,
+              -0px  1px 0 white, 2px  1px 0 white,
+               1px  2px 0 white,-2px -1px 0 white,
+              -1px -2px 0 white, 2px -1px 0 white,
+               1px -2px 0 white,-2px  1px 0 white,
+              -1px  2px 0 white, 3px  2px 0 white,
+               2px  3px 0 white,-3px -2px 0 white,
+              -2px -3px 0 white, 3px -2px 0 white,
+               2px -3px 0 white,-3px  2px 0 white,
+              -2px  3px 0 white, 4px  3px 0 white;
+  padding:0.11em 0.2em;
+  top:-1.7em;
+  left:3px;
+  color:rgba(0, 0, 0, 0.3);
+  position:relative;
+  z-index:10;
+  -webkit-transform: rotate(1.6deg);
+  -moz-transform: rotate(1.6deg);
+  -ms-transform: rotate(1.6deg);
+  transform: rotate(1.6deg);
+
+}

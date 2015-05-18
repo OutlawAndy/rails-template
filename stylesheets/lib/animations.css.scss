@@ -1,0 +1,214 @@
+.push {
+  -webkit-transition:all ease-in 0.5s;
+  transition:all ease-in 0.5s;
+  -webkit-transform: translateX(-450px);
+  transform: translateX(-450px);
+  max-height:60px;
+}
+.push.ng-move,
+.push.ng-enter,
+.push.ng-leave {
+  -webkit-transition:all ease-in 0.5s;
+  transition:all ease-in 0.5s;
+  max-height:0;
+}
+.push.ng-enter-stagger {
+  -webkit-transition-delay: 0.30s;
+  transition-delay: 0.30s;
+  -webkit-transition-duration: 0s;
+  transition-duration: 0s;
+}
+.push.ng-enter {
+  -webkit-transform: translateX(-450px) translateY(-100px);
+  transform: translateX(-450px) translateY(-100px);
+  opacity: 0;
+  max-height:0px;
+}
+.push.ng-move {
+  -webkit-transform: translateX(-450px) translateY(-100px);
+  transform: translateX(-450px) translateY(-100px);
+  opacity: 1;
+  max-height:60px;
+}
+.push.ng-leave.ng-leave-active {
+  -webkit-transform: skewX(-65deg) translateX(200px);
+  transform: skewX(-65deg) translateX(200px);
+  opacity: 0;
+  max-height:0px;
+}
+.push.ng-leave, .push.ng-enter.ng-enter-active, .push.ng-move.ng-move-active {
+  -webkit-transform: skewX(0deg) translateX(-450px);
+  transform: skewX(0deg) translateX(-450px);
+  opacity: 1;
+  max-height:60px;
+}
+.animation-container {
+  -webkit-perspective: 800;
+  perspective: 800;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  position:relative;
+  height:400px;
+  overflow:hidden;
+}
+.view-animate {
+  padding-top:10px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 400ms;
+  transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 400ms;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.view-animate.ng-enter-active {
+  opacity: 1;
+  -webkit-transform:translateX(0px);
+  -moz-transform:translateX(0px);
+  transform:translateX(0px);
+}
+.view-animate.ng-leave {
+  opacity: 1;
+  -webkit-transform:translateX(0px);
+  -moz-transform:translateX(0px);
+  transform:translateX(0px);
+}
+.animate-switch-container {
+  position:relative;
+  overflow:visible;
+  width:200px;
+  left:5%;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+
+}
+.ui.labeled.icon.button.animate-switch,
+.ui.labeled.icon.button.pre-animate,
+.ui.labeled.icon.button.post-animate {
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:55px;
+
+}
+
+@keyframes background-crawl {
+  from {
+   background-position:0px 0px;
+  }
+  to {
+   background-position:-2400px 0px;
+  }
+}
+@-moz-keyframes background-crawl {
+  from {
+   background-position:0px 0px;
+  }
+  to {
+   background-position:-2400px 0px;
+  }
+}
+@-webkit-keyframes background-crawl {
+  from {
+   background-position:0px 0px;
+  }
+  to {
+   background-position:-2400px 0px;
+  }
+}
+@-ms-keyframes background-crawl {
+  from {
+   background-position:0px 0px;
+  }
+  to {
+   background-position:-2400px 0px;
+  }
+}
+@-o-keyframes background-crawl {
+  from {
+   background-position:0px 0px;
+  }
+  to {
+   background-position:-2400px 0px;
+  }
+}
+
+@keyframes icon-spinning {
+ from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+ }
+ to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+ }
+}
+@-moz-keyframes icon-spinning {
+ from {
+   -moz-transform: rotate(0deg);
+   transform: rotate(0deg);
+ }
+ to {
+   -moz-transform: rotate(360deg);
+   transform: rotate(360deg);
+ }
+}
+@-webkit-keyframes icon-spinning {
+ from {
+   -webkit-transform: rotate(0deg);
+   transform: rotate(0deg);
+ }
+ to {
+   -webkit-transform: rotate(360deg);
+   transform: rotate(360deg);
+ }
+}
+@-ms-keyframes icon-spinning {
+ from {
+   -ms-transform: rotate(0deg);
+   transform: rotate(0deg);
+ }
+ to {
+   -ms-transform: rotate(360deg);
+   transform: rotate(360deg);
+ }
+}
+@-o-keyframes icon-spinning {
+ from {
+   -o-transform: rotate(0deg);
+   transform: rotate(0deg);
+ }
+ to {
+   -o-transform: rotate(360deg);
+   transform: rotate(360deg);
+ }
+}
+@keyframes slide-deck {
+  from {
+    background-width:0%;
+    background-height:0%;
+  }
+  to {
+    background-width:100%;
+    background-height:100%;
+  }
+}
+@-webkit-keyframes slide-deck {
+  from {
+    background-width:0%;
+    background-height:0%;
+  }
+  to {
+    background-width:100%;
+    background-height:100%;
+  }
+}

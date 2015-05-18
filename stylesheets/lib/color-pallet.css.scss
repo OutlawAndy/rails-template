@@ -1,0 +1,71 @@
+$black: #5C6166;
+$hover-black: #4C4C4C;
+$active-black: #333333;
+
+$rich-red: #DE3859;
+$red: #D95C5C;
+$hover-red: #E75859;
+$active-red: #D24B4C;
+
+$lime: #A1CF64;
+$hover-lime: #89B84C;
+
+$green: #5BBD72;
+$hover-green: #58CB73;
+$active-green: #4CB164;
+
+$orange: #E96633;
+$hover-orange: #FF7038;
+$active-orange: #DA683B;
+
+$purple: #564F8A;
+$hover-purple: #3E3773;
+$active-purple: #2E2860;
+
+/* rgb(52, 152, 219) */
+$base: #3498db;
+$light-base: rgb(116, 184, 229);
+$blue: #6ECFF5;
+$kid-blue: $blue;
+$hover-blue: #1AB8F3;
+$active-blue: #0AA5DF;
+$bright-blue: #00B9F0;
+
+$teal: #00B5AD;
+$hover-teal: #009A93;
+$active-teal: #00847E;
+
+$highlight: #A0F;
+
+/* #fc83d8 */
+$red-theme-base: #911d1d;
+$deep-purple: #564F8A;
+$bright-purple: #A24096;
+
+/* rgb(162, 64, 150) */
+$star-light: #eee875;
+$sunkist: #F05940;
+$flat-red: #D95C5C;
+$bright-red: #EF3F49;
+
+/* rgb(239, 63, 73) */
+$lime: #A1CF64;
+$bright-green: #56BB73;
+
+/* rgb(86, 187, 115) */
+$teal: #00B5AD;
+
+/* rgb(0, 185, 240) */
+$flat-black: #5C6166;
+$light-grey: rgb(238, 238, 238);
+
+$deep-translucent-purple: rgba(36, 29, 88, 0.85);
+$deep-translucent-red: rgba(176, 0, 13, 0.85);
+
+$height: 540px;
+$width: 960px;
+$half-width: ($width / 2);
+
+$m-height: 430px;
+$m-width: 760px;
+$m-half-width: ($m-width / 2);

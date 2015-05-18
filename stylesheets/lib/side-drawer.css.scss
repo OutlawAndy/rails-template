@@ -1,0 +1,30 @@
+#page-container {
+  @include transition(all);
+  overflow: hidden;
+  padding-right: 0;
+  padding-left: 0;
+}
+.drawer {
+  position:absolute;
+  top:0;
+  left:0;
+  width:200px;
+  z-index:0;
+  .menu {
+    width:200px !important;
+  }
+}
+.slide.placeholder {
+  width:200px;
+  height:200px;
+  display:inline-block;
+  float:left;
+  z-index:-1000;
+  pointer-events: none;
+}
+.slide.main-content {
+  z-index:100;
+  background-color:white;
+//  border-left: 1px solid $deep_translucent_purple;
+  box-shadow: -0.02em 0 2em rgba(70,70,70,0.6);
+}

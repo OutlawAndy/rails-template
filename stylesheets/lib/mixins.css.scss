@@ -1,0 +1,236 @@
+
+@mixin non-linear-transition($time) {
+  -webkit-transition: all $time ease-in-out;
+  -moz-transition: all $time ease-in-out;
+  -o-transition: all $time ease-in-out;
+  transition: all $time ease-in-out;
+}
+@mixin linear_transition_for($prop,$time) {
+  -webkit-transition: $prop $time linear;
+  -moz-transition: $prop $time linear;
+  -o-transition: $prop $time linear;
+  transition: $prop $time linear;
+}
+@mixin transition_for($prop,$time) {
+  -webkit-transition: $prop $time ease;
+  -moz-transition: $prop $time ease;
+  -o-transition: $prop $time ease;
+  transition: $prop $time ease;
+}
+@mixin delayed_transition($prop,$delay) {
+  -webkit-transition: $prop 0.3s ease $delay;
+  -moz-transition: $prop 0.3s ease $delay;
+  -o-transition: $prop 0.3s ease $delay;
+  transition: $prop 0.3s ease $delay;
+}
+@mixin transition($prop) {
+  -webkit-transition: $prop 0.3s ease;
+  -moz-transition: $prop 0.3s ease;
+  -o-transition: $prop 0.3s ease;
+  transition: $prop 0.3s ease;
+}
+@mixin translate3d($x,$y,$z) {
+  -webkit-transform: translate3d($x, $y, $z);
+  -moz-transform: translate3d($x, $y, $z);
+  -ms-transform: translate3d($x, $y, $z);
+  -o-transform: translate3d($x, $y, $z);
+  transform: translate3d($x, $y, $z);
+}
+@mixin translateX($dist) {
+  -webkit-transform: translateX($dist);
+  -moz-transform: translateX($dist);
+  -ms-transform: translateX($dist);
+  -o-transform: translateX($dist);
+  transform: translateX($dist);
+}
+@mixin translateY($dist) {
+  -webkit-transform: translateY($dist);
+  -moz-transform: translateY($dist);
+  -ms-transform: translateY($dist);
+  -o-transform: translateY($dist);
+  transform: translateY($dist);
+}
+@mixin scale($scale) {
+  -webkit-transform: scale($scale);
+  -moz-transform: scale($scale);
+  -ms-transform: scale($scale);
+  -o-transform: scale($scale);
+  transform: scale($scale);
+}
+@mixin scaleX($scale) {
+  -webkit-transform: scaleX($scale);
+  -moz-transform: scaleX($scale);
+  -ms-transform: scaleX($scale);
+  -o-transform: scaleX($scale);
+  transform: scaleX($scale);
+}
+@mixin scaleY($scale) {
+  -webkit-transform: scaleY($scale);
+  -moz-transform: scaleY($scale);
+  -ms-transform: scaleY($scale);
+  -o-transform: scaleY($scale);
+  transform: scaleY($scale);
+}
+@mixin rot-scale($deg,$scale) {
+  -webkit-transform: rotateZ($deg) scale($scale);
+  -moz-transform: rotateZ($deg) scale($scale);
+  -ms-transform: rotateZ($deg) scale($scale);
+  -o-transform: rotateZ($deg) scale($scale);
+  transform: rotateZ($deg) scale($scale);
+}
+@mixin rotateZ($deg) {
+  -webkit-transform: rotateZ($deg);
+  -moz-transform: rotateZ($deg);
+  -ms-transform: rotateZ($deg);
+  -o-transform: rotateZ($deg);
+  transform: rotateZ($deg);
+}
+@mixin rotate($deg) {
+  -webkit-transform: rotateX($deg);
+  -moz-transform: rotateX($deg);
+  -ms-transform: rotateX($deg);
+  -o-transform: rotateX($deg);
+  transform: rotateX($deg);
+}
+@mixin rotateX($deg, $dist) {
+  -webkit-transform: rotateX($deg) translate3d(0,0,$dist);
+  -moz-transform: rotateX($deg) translate3d(0,0,$dist);
+  -ms-transform: rotateX($deg) translate3d(0,0,$dist);
+  -o-transform: rotateX($deg) translate3d(0,0,$dist);
+  transform: rotateX($deg) translate3d(0,0,$dist);
+}
+@mixin rotateXspec($deg, $dist) {
+  -webkit-transform: translate3d(0,0,-$dist) rotateX($deg) translate3d(0,0,$dist);
+  -moz-transform: translate3d(0,0,-$dist) rotateX($deg) translate3d(0,0,$dist);
+  -ms-transform: translate3d(0,0,-$dist) rotateX($deg) translate3d(0,0,$dist);
+  -o-transform: translate3d(0,0,-$dist) rotateX($deg) translate3d(0,0,$dist);
+  transform: translate3d(0,0,-$dist) rotateX($deg) translate3d(0,0,$dist);
+}
+@mixin rotateY3d($deg, $dist) {
+  -webkit-transform: rotateY($deg) translate3d(0,0,$dist);
+  -moz-transform:  rotateY($deg) translate3d(0,0,$dist);
+  -ms-transform: rotateY($deg) translate3d(0,0,$dist);
+  -o-transform: rotateY($deg) translate3d(0,0,$dist);
+  transform: rotateY($deg) translate3d(0,0,$dist);
+}
+@mixin flip($x, $y) {
+  transform-origin: 50% 50%;
+  -webkit-transform: rotateZ(180deg) translate($x, $y);
+  -moz-transform: rotateZ(180deg) translate($x, $y);
+  -ms-transform: rotateZ(180deg) translate($x, $y);
+  -o-transform: rotateZ(180deg) translate($x, $y);
+  transform: rotateZ(180deg) translate($x, $y);
+}
+@mixin transform( $function, $value ) {
+  -webkit-transform: $function $value;
+  -moz-transform: $function $value;
+  -ms-transform: $function $value;
+  -o-transform: $function $value;
+  transform: $function $value;
+}
+@mixin dash-flash($flash-color) {
+  clear:both;
+  span {
+    font-family:'Quicksand';
+    position:relative;
+    margin: 10px auto;
+  }
+  margin-top: 35px;
+  clear: both;
+  border: none;
+  border-radius: 2px;
+  height: 50px;
+  color: darken($flash-color, 20%);
+  font-weight:bold;
+  text-shadow: 0 1px 0 #ccc;
+  background-color:$flash-color;
+  z-index:200;
+}
+@mixin panel-ends($base) {
+  clear:both;
+  font-family:'Poiret One';
+  position:relative;
+  margin-top:-1px;
+  font-weight:900;
+  color:black;
+//  text-shadow: 0 -1px 0 white;
+  background-color:$base;
+  background-image: -webkit-linear-gradient(top, lighten($base, 10%) 0%, $base 100%);
+  border-bottom:1px solid darken($base, 20%);
+}
+@mixin titlebar-background {
+  background: rgb(176, 0, 13); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(52, 152, 219, 0.9) 0%, rgba(0, 122, 204, 0.9) 100%); /* FF3.6+ */
+  background: -webkit-linear-gradient(top,  rgba(52, 152, 219, 0.9) 0%, rgba(0, 122, 204, 0.9) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(52, 152, 219, 0.9) 0%, rgba(0, 122, 204, 0.9) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(52, 152, 219, 0.9) 0%, rgba(0, 122, 204, 0.9) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(52, 152, 219, 0.9) 0%, rgba(0, 122, 204, 0.9) 100%); /* W3C */
+//  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3498db', endColorstr='#007acc',GradientType=0 ); /* IE6-9 */
+}
+@mixin radial-grad($color1,$percent1,$color2,$percent2) {
+  background: $color1; /* Old browsers */
+  background: -moz-radial-gradient(circle, $color1 $percent1, $color2 $percent2); /* FF3.6+ */
+  background: -webkit-radial-gradient(circle, $color1 $percent1, $color2 $percent2); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(circle, $color1 $percent1, $color2 $percent2); /* Opera 11.10+ */
+  background: -ms-radial-gradient(circle, $color1 $percent1, $color2 $percent2); /* IE10+ */
+  background: radial-gradient(circle, $color1 $percent1, $color2 $percent2); /* W3C */
+}
+@mixin slider {
+  -webkit-transition: translate3d 0.5s ease-in;
+  -moz-transition: translate3d 0.5s ease-in;
+  -o-transition: translate3d 0.5s ease-in;
+  transition: translate3d 0.5s ease-in;
+}
+@mixin ibtn($color) {
+  background:$color;
+  border:none;
+  &:hover {
+    background: darken($color, 10%);
+    border:none;
+  }
+}
+@mixin loop-animation($anim, $loopTime) {
+  -webkit-animation: $anim $loopTime linear infinite;
+  -moz-animation: $anim $loopTime linear infinite;
+  -ms-animation: $anim $loopTime linear infinite;
+  -o-animation: $anim $loopTime linear infinite;
+  animation: $anim $loopTime linear infinite;
+
+}
+@mixin text-shadow3d($color) {
+  text-shadow: -0.5px 0.5px 0px $color,
+               -0.5px 1px   0px $color,
+               -1px   1.5px 0px $color,
+               -1px   2px   0px $color,
+               -1.5px 2.5px 0px $color,
+               -1.5px 3px   0px $color,
+               -2px   3.5px 0px $color;
+}
+@mixin text-shadow3d-outline($color) {
+  text-shadow: -0.5px 0.5px 0px white,
+               -0.5px 1px   0px $color,
+               -1px   1.5px 0px $color,
+               -1px   2px   0px $color,
+               -1.5px 2.5px 0px $color,
+               -1.5px 3px   0px $color,
+               -2px   3.5px 0px $color;
+}
+@mixin shadow-tilt($color, $durration) {
+  @include non-linear-transition($durration);
+  text-shadow: -0.5px 0.5px 0px $color,
+               -0.5px 1px   0px $color,
+               -1px   1.5px 0px $color,
+               -1px   2px   0px $color,
+               -1.5px 2.5px 0px $color,
+               -1.5px 3px   0px $color,
+               -2px   3.5px 0px $color;
+  &:hover {
+    text-shadow: -0.5px -0.5px 0px $color,
+                 -0.5px -1px   0px $color,
+                 -1px   -1.5px 0px $color,
+                 -1px   -2px   0px $color,
+                 -1.5px -2.5px 0px $color,
+                 -1.5px -3px   0px $color,
+                 -2px   -3.5px 0px $color;
+  }
+}

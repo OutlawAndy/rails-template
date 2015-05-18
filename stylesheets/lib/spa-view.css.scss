@@ -1,0 +1,245 @@
+#index-wrapper {
+  zoom:1;
+  background:white;
+  overflow-y:scroll !important;
+  overflow-x:hidden !important;
+  border-left: 1px solid rgb(236, 236, 236);
+  -webkit-transition: -webkit-transform 500ms ease-in;
+  -moz-transition: -moz-transform 500ms ease-in;
+  -ms-transition: -ms-transform 500ms ease-in;
+  -o-transition: -o-transform 500ms ease-in;
+  transition: transform 500ms ease-in;
+  position:absolute;
+  top:0px;
+  @include translate3d(212px,0,0);
+  perspective: 800px;
+}
+body.player-view #index-wrapper {
+  @include translate3d(74px,0,0);
+}
+body.cert-view #index-wrapper {
+  @include translate3d(0,0,0);
+}
+.spa-view {
+  position: absolute;
+  width:100%;
+  -webkit-transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 600ms;
+  transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 600ms;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.spa-view .ui.grid > .row.sub-view {
+  position: absolute;
+  width:84% !important;
+  -webkit-transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 600ms;
+  transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 600ms;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  .row>.column>.ui.grid {
+    margin: 0%;
+  }
+}
+
+body.up .spa-view.ng-enter,
+body.up .sub-view.ng-enter {
+  opacity: 0;
+  @include translate3d(150px,0,0);
+}
+body.down .spa-view.ng-enter,
+body.down .sub-view.ng-enter {
+  opacity: 0;
+  @include translate3d(-150px,0,0);
+}
+body.up .spa-view.ng-enter.ng-enter-active,
+body.down .spa-view.ng-enter.ng-enter-active,
+body.up .spa-view.ng-leave, body.down .spa-view.ng-leave,
+body.up .sub-view.ng-enter.ng-enter-active,
+body.down .sub-view.ng-enter.ng-enter-active,
+body.up .sub-view.ng-leave, body.down .spa-view.ng-leave {
+  opacity: 1;
+  @include translate3d(0,0,0);
+}
+body.up .spa-view.ng-leave.ng-leave-active,
+body.up .sub-view.ng-leave.ng-leave-active {
+  opacity: 0;
+  @include translate3d(-150px,0,0);
+}
+body.down .spa-view.ng-leave.ng-leave-active,
+body.down .sub-view.ng-leave.ng-leave-active {
+  opacity: 0;
+  @include translate3d(150px,0,0);
+}
+.touch body.up.player-view .spa-view.ng-leave.ng-leave-active {
+  opacity: 0;
+  @include translate3d(0,0,0);
+}
+.touch body.down.player-view .spa-view.ng-leave.ng-leave-active {
+  opacity: 0;
+  @include translate3d(0,0,0);
+}
+.switch-container:not(.no-translate) {
+  @include translate3d(0,0,0);
+}
+.switch-container {
+  .animate-switch {
+    position: absolute;
+    width:100%;
+    -webkit-transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 600ms;
+    transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 600ms;
+  }
+  .animate-switch.base.ng-enter {
+    opacity: 0;
+    @include translate3d(-150px,0,0);
+  }
+  .animate-switch.drill-down.ng-enter {
+    opacity: 0;
+    @include translate3d(150px,0,0);
+  }
+  .animate-switch.ng-enter.ng-enter-active,
+  .animate-switch.ng-leave {
+    opacity: 1;
+    @include translate3d(0,0,0);
+  }
+  .animate-switch.base.ng-leave.ng-leave-active {
+    opacity: 0;
+    @include translate3d(-150px,0,0);
+  }
+  .animate-switch.drill-down.ng-leave.ng-leave-active {
+    opacity: 0;
+    @include translate3d(150px,0,0);
+  }
+}
+.rotate-container {
+  @include translate3d(0,0,0);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective:800px;
+  perspective-origin: 50% 0%;
+  .rotate-switch {
+    position: absolute;
+    width:100%;
+    -webkit-transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 300ms;
+    transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 300ms;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+  .rotate-switch.base.ng-enter {
+    opacity: 0;
+    @include rotateX(-90deg, 15px);
+  }
+  .rotate-switch.below.ng-enter {
+    opacity: 0;
+    @include rotateX(90deg, 15px);
+  }
+  .rotate-switch.ng-enter.ng-enter-active,
+  .rotate-switch.ng-leave {
+    opacity: 1;
+    @include rotateX(0deg, 15px);
+  }
+  .rotate-switch.base.ng-leave.ng-leave-active {
+    opacity: 0;
+    @include rotateX(-90deg, 15px);
+  }
+  .rotate-switch.below.ng-leave.ng-leave-active {
+    opacity: 0;
+    @include rotateX(90deg, 15px);
+  }
+  .stats.rotate-switch.base.ng-enter {
+    opacity: 0;
+    @include rotateXspec(-90deg, 75px);
+  }
+  .stats.rotate-switch.below.ng-enter {
+    opacity: 0;
+    @include rotateXspec(90deg, 75px);
+  }
+  .stats.rotate-switch.ng-enter.ng-enter-active,
+  .stats.rotate-switch.ng-leave {
+    opacity: 1;
+    @include rotateXspec(0deg, 75px);
+  }
+  .stats.rotate-switch.base.ng-leave.ng-leave-active {
+    opacity: 0;
+    @include rotateXspec(-90deg, 75px);
+  }
+  .stats.rotate-switch.below.ng-leave.ng-leave-active {
+    opacity: 0;
+    @include rotateXspec(90deg, 75px);
+  }
+}
+.quiz-container {
+  @include translate3d(0,0,0);
+  .fireworks-container {
+    @include translate3d(0,0,0);
+    position:absolute;
+    top:0;
+    -webkit-transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 1500ms;
+    transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 1500ms;
+  }
+  .fireworks-container.ng-enter {
+    top:0;
+    opacity:0;
+  }
+  .fireworks-container.ng-enter.ng-enter-active {
+    top:0;
+    opacity:1;
+  }
+  .quiz {
+    top:0;
+    -webkit-transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 1500ms;
+    transition:all cubic-bezier(0.100, 0.500, 0.600, 0.990) 1500ms;
+  }
+  .quiz.ng-leave {
+    top:0;
+    opacity:1;
+  }
+  .quiz.ng-leave.ng-leave-active {
+    top:0;
+    opacity:0;
+  }
+}
+.expansion-container {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective:800px;
+  perspective-origin: 50% 0%;
+  .field {
+    @include transition(all);
+  }
+  .field .input {
+    @include transition(all);
+  }
+  .field.ng-enter {
+    max-height:0;
+    .input {
+      opacity:0;
+      @include translate3d(-100px,0,-10px);
+    }
+  }
+  .field.ng-enter.ng-enter-active,
+  .field.ng-leave {
+    max-height:61px;
+    .input {
+      @include translate3d(0,0,0);
+      opacity:1;
+    }
+  }
+  .field.ng-leave.ng-leave-active {
+    max-height:0;
+    .input {
+      opacity:0;
+      @include translate3d(100px,0,-10px);
+    }
+  }
+  .field.ng-leave label {
+    opacity:0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .spa-view .ui.grid > .row.sub-view {
+    width: 100% !important;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0% 8% 0% 0%;
+  }
+}
