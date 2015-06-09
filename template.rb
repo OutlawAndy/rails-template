@@ -22,6 +22,7 @@ gem 'fog'
 gem 'rack-cache'
 gem 'pusher'
 gem_group :development, :test do
+  gem 'stripe-cli'
   gem 'rspec-rails'
   gem 'timecop'
   gem 'binding.repl'
@@ -65,6 +66,9 @@ file '.gitignore', <<-CONFIG
 # Ignore bower installed repos
 /vendor/assets/javascripts/bower_components
 /.bowerrc
+
+# Ignore local stripe-cli config
+/.stripecli
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
