@@ -5,24 +5,12 @@ run "rm README.rdoc;touch README.md"
 add_source "http://rubygems.org"
 
 gem 'puma'
-gem 'auto_html'
-gem 'devise'
-gem 'stripe', github: 'stripe/stripe-ruby'
 gem 'rb-fsevent', require: false
-gem 'redis', '~> 3.0.1'
-gem 'hiredis', '~> 0.4.5'
-gem 'em-synchrony'
-gem 'mailgun'
-gem 'httparty'
 gem 'prowly'
 gem 'redis-objects'
-gem 'carrierwave'
-gem 'carrierwave_direct'
-gem 'fog'
 gem 'rack-cache'
-gem 'pusher'
+gem 'awesome_print'
 gem_group :development, :test do
-  gem 'stripe-cli'
   gem 'rspec-rails'
   gem 'timecop'
   gem 'binding.repl'
@@ -31,7 +19,6 @@ gem_group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'database_cleaner'
-  gem 'awesome_print'
   gem 'commands'
 end
 gem_group :production do
@@ -86,111 +73,109 @@ file 'Procfile', <<-CODE
   web: bundle exec puma -t ${PUMA_MIN_THREADS:-8}:${PUMA_MAX_THREADS:-12} -w ${PUMA_WORKERS:-2} -p $PORT -e ${RACK_ENV:-production}
 CODE
 
-file 'redis.conf', <<-CODE
-timeout 0
-databases 10
-daemonize yes
-pidfile './tmp/pids/redis.pid'
-save 900 1
-save 300 10
-save 60 1000
-dir '#{ENV['HOME']}/CODE/db/redis-stores/#{Pathname.pwd.basename}/dev'
-maxmemory-policy noeviction
-appendonly yes
-appendfsync everysec
-no-appendfsync-on-rewrite no
-auto-aof-rewrite-percentage 100
-auto-aof-rewrite-min-size 64mb
-activerehashing yes
-client-output-buffer-limit normal 0 0 0
-client-output-buffer-limit slave 256mb 64mb 60
-client-output-buffer-limit pubsub 32mb 8mb 60
-aof-rewrite-incremental-fsync yes
-CODE
+# file 'redis.conf', <<-CODE
+# timeout 0
+# databases 10
+# daemonize yes
+# pidfile './tmp/pids/redis.pid'
+# save 900 1
+# save 300 10
+# save 60 1000
+# dir '#{ENV['HOME']}/CODE/db/redis-stores/#{Pathname.pwd.basename}/dev'
+# maxmemory-policy noeviction
+# appendonly yes
+# appendfsync everysec
+# no-appendfsync-on-rewrite no
+# auto-aof-rewrite-percentage 100
+# auto-aof-rewrite-min-size 64mb
+# activerehashing yes
+# client-output-buffer-limit normal 0 0 0
+# client-output-buffer-limit slave 256mb 64mb 60
+# client-output-buffer-limit pubsub 32mb 8mb 60
+# aof-rewrite-incremental-fsync yes
+# CODE
 
-lib 'nest.rb' do
-<<-NEST
-require 'redis'
-class Nest < String
-  VERSION = "1.1.0"
+# lib 'nest.rb' do
+# <<-NEST
+# require 'redis'
+# class Nest < String
+#   VERSION = "1.1.0"
+#
+#   METHODS = [ :append, :blpop, :brpop, :brpoplpush, :decr, :decrby,
+#   :del, :exists, :expire, :expireat, :get, :getbit, :getrange, :getset,
+#   :hdel, :hexists, :hget, :hgetall, :hincrby, :hkeys, :hlen, :hmget,
+#   :hmset, :hset, :hsetnx, :hvals, :incr, :incrby, :lindex, :linsert,
+#   :llen, :lpop, :lpush, :lpushx, :lrange, :lrem, :lset, :ltrim, :move,
+#   :persist, :publish, :rename, :renamenx, :rpop, :rpoplpush, :rpush,
+#   :rpushx, :sadd, :scard, :sdiff, :sdiffstore, :set, :setbit, :setex,
+#   :setnx, :setrange, :sinter, :sinterstore, :sismember, :smembers,
+#   :smove, :sort, :spop, :srandmember, :srem, :strlen, :subscribe,
+#   :sunion, :sunionstore, :ttl, :type, :unsubscribe, :watch, :zadd,
+#   :zcard, :zcount, :zincrby, :zinterstore, :zrange, :zrangebyscore,
+#   :zrank, :zrem, :zremrangebyrank, :zremrangebyscore, :zrevrange,
+#   :zrevrangebyscore, :zrevrank, :zscore, :zunionstore ]
+#
+#   attr :redis
+#
+#   def initialize key, redis = Redis.current
+#     key = key.to_redis_key if key.respond_to?( :to_redis_key )
+#     super key
+#     @redis = redis
+#   end
+#
+#   def [] key
+#     key = key.to_redis_key if key.respond_to?( :to_redis_key )
+#     self.class.new "\#{self}:\#{key}", redis
+#   end
+#
+#   METHODS.each do |meth|
+#     define_method meth do |*args, &block|
+#       redis.send meth, self, *args, &block
+#     end
+#   end
+# end
+# NEST
+# end
+#
+# rakefile 'autohtml.rake' do
+# <<-TASK
+# require 'auto_html'
+#
+# module AutoHtml
+#   module Task
+#     def self.obtain_class
+#       class_name = ENV['CLASS'] || ENV['class']
+#       raise "Must specify CLASS" unless class_name
+#       class_name
+#     end
+#   end
+# end
+# namespace :auto_html do
+#   desc "Rebuild auto_html columns"
+#   task rebuild: :environment do
+#
+#     klass  = AutoHtml::Task.obtain_class.constantize
+#     suffix = AutoHtmlFor.auto_html_for_options[:htmlized_attribute_suffix]
+#     column_names = klass.respond_to?(:column_names) ? klass.column_names : klass.fields.keys
+#     observed_attributes = column_names.select { |c| c=~/\#{suffix}$/ }.map { |c| c.gsub(/\#{suffix}$/, '')}
+#
+#     i = 0
+#     klass.find_each do |item|
+#       observed_attributes.each do |field|
+#         item.send("\#{field}=", item.send(field))
+#       end
+#       item.save
+#       i += 1
+#     end
+#
+#     puts "Done! Processed \#{i} items."
+#   end
+# end
+# TASK
+# end
 
-  METHODS = [ :append, :blpop, :brpop, :brpoplpush, :decr, :decrby,
-  :del, :exists, :expire, :expireat, :get, :getbit, :getrange, :getset,
-  :hdel, :hexists, :hget, :hgetall, :hincrby, :hkeys, :hlen, :hmget,
-  :hmset, :hset, :hsetnx, :hvals, :incr, :incrby, :lindex, :linsert,
-  :llen, :lpop, :lpush, :lpushx, :lrange, :lrem, :lset, :ltrim, :move,
-  :persist, :publish, :rename, :renamenx, :rpop, :rpoplpush, :rpush,
-  :rpushx, :sadd, :scard, :sdiff, :sdiffstore, :set, :setbit, :setex,
-  :setnx, :setrange, :sinter, :sinterstore, :sismember, :smembers,
-  :smove, :sort, :spop, :srandmember, :srem, :strlen, :subscribe,
-  :sunion, :sunionstore, :ttl, :type, :unsubscribe, :watch, :zadd,
-  :zcard, :zcount, :zincrby, :zinterstore, :zrange, :zrangebyscore,
-  :zrank, :zrem, :zremrangebyrank, :zremrangebyscore, :zrevrange,
-  :zrevrangebyscore, :zrevrank, :zscore, :zunionstore ]
-
-  attr :redis
-
-  def initialize key, redis = Redis.current
-    key = key.to_redis_key if key.respond_to?( :to_redis_key )
-    super key
-    @redis = redis
-  end
-
-  def [] key
-    key = key.to_redis_key if key.respond_to?( :to_redis_key )
-    self.class.new "\#{self}:\#{key}", redis
-  end
-
-  METHODS.each do |meth|
-    define_method meth do |*args, &block|
-      redis.send meth, self, *args, &block
-    end
-  end
-end
-NEST
-end
-
-rakefile 'autohtml.rake' do
+rakefile 'model_schema.rake' do
 <<-TASK
-require 'auto_html'
-
-module AutoHtml
-  module Task
-    def self.obtain_class
-      class_name = ENV['CLASS'] || ENV['class']
-      raise "Must specify CLASS" unless class_name
-      class_name
-    end
-  end
-end
-namespace :auto_html do
-  desc "Rebuild auto_html columns"
-  task rebuild: :environment do
-
-    klass  = AutoHtml::Task.obtain_class.constantize
-    suffix = AutoHtmlFor.auto_html_for_options[:htmlized_attribute_suffix]
-    column_names = klass.respond_to?(:column_names) ? klass.column_names : klass.fields.keys
-    observed_attributes = column_names.select { |c| c=~/\#{suffix}$/ }.map { |c| c.gsub(/\#{suffix}$/, '')}
-
-    i = 0
-    klass.find_each do |item|
-      observed_attributes.each do |field|
-        item.send("\#{field}=", item.send(field))
-      end
-      item.save
-      i += 1
-    end
-
-    puts "Done! Processed \#{i} items."
-  end
-end
-TASK
-end
-
-rakefile 'schema_ref.rake' do
-<<-TASK
-ENV['NOT_ARRAYS'] ||= "status"
-
 module SchemaGen
   module Utils
     def self.path_to klass
@@ -202,16 +187,28 @@ module SchemaGen
     end
 
     def self.type_text_or_integer_and_ends_with_s? key, val
-      (val.type.to_s == "text" || val.type.to_s == "integer") &&
-      key.to_s.ends_with?("s") && !key.to_s.in?(not_arrays)
+      key.to_s.in?(are_arrays) ||
+      ((val.type.to_s == "text" || val.type.to_s == "integer") &&
+       (key.to_s.ends_with?("s") || key.to_s.ends_with?("_array"))) &&
+      !key.to_s.in?(not_arrays)
     end
 
     def self.type_string_and_ends_with_types? key, val
-      val.type.to_s == "string" && (key.to_s.ends_with?("types") || key.to_s.ends_with?("keys")) && !key.to_s.in?(not_arrays)
+      val.type.to_s == "string" &&
+      (key.to_s.ends_with?("_types") || key.to_s.ends_with?("_keys") || key.to_s.ends_with?("_array") || key.to_s.in?(are_arrays) ) &&
+      !key.to_s.in?(not_arrays)
     end
 
     def self.not_arrays
       ENV['NOT_ARRAYS'].split(",").map(&:strip)
+    end
+
+    def self.are_arrays
+      ENV['ARE_ARRAYS'].split(",").map(&:strip)
+    end
+
+    def self.longest_class_name_length klasses
+      klasses.map{|klass| klass.name.length + 1 }.max
     end
   end
 end
@@ -220,7 +217,14 @@ namespace :gen do
   desc "Generate a Schema Reference in comments at the end of every ActiveRecord Model Class definition"
   task model_schema: :environment do
     Rails.application.eager_load!
-    ActiveRecord::Base.subclasses.each do |klass|
+    subclasses = ActiveRecord::Base.subclasses
+    subclasses.delete_if do |klass|
+      klass.name.end_with?("AssociationExtension") ||
+      klass.name == "PgSearch::Document" ||
+      klass.name == "Delayed::Backend::ActiveRecord::Job"
+    end
+    longest_klass_name_length = SchemaGen::Utils.longest_class_name_length(subclasses)
+    subclasses.each do |klass|
       next if "\#{klass}" == "Delayed::Backend::ActiveRecord::Job"
       max_length = SchemaGen::Utils.length_of_longest_field_name(klass)
       column_desc = klass.columns_hash.each_with_object("## Database Schema\n#\n") do |(key,val),tmp|
@@ -237,7 +241,7 @@ namespace :gen do
         file.read
         file.write column_desc
       end
-      puts "%-*s schema generated" % [17,klass.name]
+      puts "%-*s schema generated" % [longest_klass_name_length,klass.name]
     end
   end
 

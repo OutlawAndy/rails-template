@@ -4,24 +4,12 @@
   <title><%= title %></title>
   <link href='//fonts.googleapis.com/css?family=Poiret+One|Quicksand' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true, defer: :defer  %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true  %>
   <%= csrf_meta_tags %>
   <base href="/" />
 </head>
 <body class="user" ng-app="<%= angular_module %>" ng-controller="RootCtrl">
-  <%= render 'shared/flash' %>
-  <div id="page-container" class="page-container">
-    <div id="drawer-container">
-      <div class="slide main-content" style="float:left;">
-        <div class="desktop-sidebar">
-          <%= render 'shared/sidebar' %>
-        </div>
-        <div id="index-wrapper" style="float:left;">
-          <div class="spa-view" ui-view="main"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="spa-view" ui-view="main"></div>
   <%= yield %>
 </body>
 </html>

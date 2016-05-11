@@ -11,8 +11,4 @@ class ApplicationController < ActionController::Base
     request.format.json?
   end
 
-  def subdomain
-    request.subdomain
-  end
-  helper_method :subdomain
 end

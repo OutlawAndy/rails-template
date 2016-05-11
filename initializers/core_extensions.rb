@@ -140,10 +140,10 @@ Date.class_eval do
   end
 
   def school_year
-    if Date.today.month > 7
-      "#{Date.today.year}-#{Date.today.next_year.year.to_s[2..-1]}"
+    if month > 6
+      "#{year}-#{next_year.year.to_s[2..-1]}"
     else
-      "#{Date.today.last_year.year}-#{Date.today.year.to_s[2..-1]}"
+      "#{last_year.year}-#{year.to_s[2..-1]}"
     end
   end
 
